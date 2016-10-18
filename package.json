@@ -1,6 +1,6 @@
 {
   "name": "react-socket-io",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A react provider for socket.io, http://socket.io/",
   "main": "dist/react-socket-io.js",
   "scripts": {

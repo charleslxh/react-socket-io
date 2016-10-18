@@ -10,7 +10,7 @@ export const warning = function (...args) {
 
   /* eslint-disable no-console */
   if (typeof console !== 'undefined' && typeof console.error === 'function') {
-    console.error.apply(console, ...args)
+    console.error.apply(console, args)
   }
   /* eslint-enable no-console */
   try {
@@ -30,6 +30,6 @@ export const debug = function (...args) {
 
   /* eslint-disable no-console */
   if (typeof console !== 'undefined' && typeof console.debug === 'function') {
-    console.debug.apply(console, ...args)
+    console.debug.apply(console, args)
   }
 }

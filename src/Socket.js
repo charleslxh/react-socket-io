@@ -10,10 +10,8 @@ class Socket extends React.Component {
 
   constructor(props, context) {
     super(props, context)
-    this.options = props.options ? props.options : {}
-    this.mergeOptions = this.mergeOptions.bind(this)
 
-    this.socket = SocketIO(props.uri, this.mergeOptions())
+    this.socket = SocketIO(props.uri, this.mergeOptions(props.options))
 
     this.socket.status = 'initialized'
 
@@ -52,8 +50,8 @@ class Socket extends React.Component {
     })
   }
 
-  mergeOptions() {
-    const options = {
+  mergeOptions(options = {}) {
+    const defaultOptions = {
       reconnection: true,
       reconnectionAttempts: Infinity,
       reconnectionDelay: 1 * 1000,
@@ -62,7 +60,7 @@ class Socket extends React.Component {
       transports: ['polling'],
       rejectUnauthorized: true
     }
-    return { ...options, ...this.options }
+    return { ...defaultOptions, ...options }
   }
 
   render() {

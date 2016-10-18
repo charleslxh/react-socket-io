@@ -6,7 +6,6 @@ import { warning } from './utils'
 class Socket extends React.Component {
   getChildContext() {
     return { socket: this.socket }
-    this.mergeOptions = this.mergeOptions.bind(this)
   }
 
   state = {
@@ -16,6 +15,7 @@ class Socket extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.options = props.options ? props.options : {}
+    this.mergeOptions = this.mergeOptions.bind(this)
   }
 
   componentDidMount() {

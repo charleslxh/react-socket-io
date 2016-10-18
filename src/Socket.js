@@ -1,65 +1,55 @@
 import React from 'react'
 import SocketIO from 'socket.io-client'
 
-import { warning } from './utils'
+import { warning, debug } from './utils'
 
 class Socket extends React.Component {
   getChildContext() {
     return { socket: this.socket }
   }
 
-  state = {
-    state: 'initialized'
-  }
-
   constructor(props, context) {
     super(props, context)
     this.options = props.options ? props.options : {}
     this.mergeOptions = this.mergeOptions.bind(this)
-  }
 
-  componentDidMount() {
-    const socket = SocketIO(this.props.uri, this.mergeOptions())
+    this.socket = SocketIO(props.uri, this.mergeOptions())
 
-    this.setState({state: 'connecting'})
+    this.socket.status = 'initialized'
 
-    socket.on('connect', (data) =>
-      this.socket = socket
-      this.setState({state: 'connected'})
-      console.log('connected')
-    )
+    this.socket.on('connect', (data) => {
+      this.socket.status = 'connected'
+      debug('connected')
+    })
 
-    socket.on('disconnect', (data) =>
-      this.socket = null
-      this.setState({state: 'disconnected'})
-      console.log('disconnect')
-    )
+    this.socket.on('disconnect', (data) => {
+      this.socket.status = 'disconnected'
+      debug('disconnect')
+    })
 
-    socket.on('error', (err) =>
-      this.socket = null
-      this.setState({state: 'failed'})
+    this.socket.on('error', (err) => {
+      this.socket.status = 'failed'
       warning('error', err)
-    )
+    })
 
-    socket.on('reconnect', (data) =>
-      this.setState({state: 'connected'})
-      this.socket = socket
-      console.log('reconnect', data)
-    )
+    this.socket.on('reconnect', (data) => {
+      this.socket.status = 'connected'
+      debug('reconnect', data)
+    })
 
-    socket.on('reconnect_attempt', (data) =>
-      console.log('reconnect_attempt')
-    )
+    this.socket.on('reconnect_attempt', (data) => {
+      debug('reconnect_attempt')
+    })
 
-    socket.on('reconnecting', (data) =>
-      this.setState({state: 'reconnecting'})
-      console.log('reconnecting')
-    )
+    this.socket.on('reconnecting', (data) => {
+      this.socket.status = 'reconnecting'
+      debug('reconnecting')
+    })
 
-    socket.on('reconnect_failed', (data) =>
-      this.setState({state: 'failed'})
-      warning('reconnect_failed')
-    )
+    this.socket.on('reconnect_failed', (error) => {
+      this.socket.status = 'failed'
+      warning('reconnect_failed', error)
+    })
   }
 
   mergeOptions() {
@@ -70,14 +60,7 @@ class Socket extends React.Component {
       reconnectionDelayMax: 10 * 1000,
       autoConnect: true,
       transports: ['polling'],
-      rejectUnauthorized: true,
-      extraHeaders: {},
-      pfx: null,
-      key: null,
-      passphrase: null,
-      cert: null,
-      ca: null,
-      ciphers: null
+      rejectUnauthorized: true
     }
     return { ...options, ...this.options }
   }
@@ -91,6 +74,10 @@ Socket.propTypes = {
   options: React.PropTypes.object,
   uri: React.PropTypes.string.isRequired,
   children: React.PropTypes.element.isRequired
+}
+
+Socket.childContextTypes = {
+  socket: React.PropTypes.object
 }
 
 export default Socket

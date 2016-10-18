@@ -23,3 +23,13 @@ export const warning = function (...args) {
   } catch (e) {}
   /* eslint-enable no-empty */
 }
+
+export const debug = function (...args) {
+  // debug on development and staging.
+  if (process.env.NODE_ENV === 'production') return
+
+  /* eslint-disable no-console */
+  if (typeof console !== 'undefined' && typeof console.debug === 'function') {
+    console.debug.apply(console, ...args)
+  }
+}

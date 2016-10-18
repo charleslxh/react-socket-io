@@ -11,7 +11,7 @@ class Event extends React.Component {
     socket: React.PropTypes.object.isRequired
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { event, handler } = this.props
     const { socket } = this.context
 
@@ -40,7 +40,7 @@ class Event extends React.Component {
   }
 }
 
-Event.PropTypes = {
+Event.propTypes = {
   event: React.PropTypes.string.isRequired,
   handler: React.PropTypes.func.isRequired
 }

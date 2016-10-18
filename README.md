@@ -2,6 +2,8 @@
 
 A react provider for socket.io, http://socket.io/
 
+react-socket-io is compatible with [browserify](http://browserify.org/).
+
 # Installation
 
 ```bash
@@ -103,27 +105,7 @@ Server socket.io uri you want to connect. If you use namespace, refer to [socket
            normal upgrade process. It is recommended you turn this on only when using
            SSL/TLS connections, or if you know that your network does not block websockets.
 
-- `pfx` (`String`): Certificate, Private key and CA certificates to use for SSL. Can be used in Node.js client environment to manually specify certificate information.
-
-- `key` (`String`): Private key to use for SSL. Can be used in Node.js client environment to manually specify certificate information.
-
-- `passphrase` (`String`): A string of passphrase for the private key or pfx. Can be used in Node.js client environment to manually specify certificate information.
-
-- `cert` (`String`): Public x509 certificate to use. Can be used in Node.js client environment to manually specify certificate information.
-
-- `ca` (`String`|`Array`): An authority certificate or array of authority certificates to check the remote host against.. Can be used in Node.js client 
-environment to manually specify certificate information.
-
-- `ciphers` (`String`): A string describing the ciphers to use or exclude. Consult the [cipher format list](http://www.openssl.org/docs/apps/ciphers.html#CIPHER_LIST_FORMAT) for details on the format. Can be used in Node.js client environment to manually specify certificate information.
-
 - `rejectUnauthorized` (`Boolean`): If true, the server certificate is verified against the list of supplied CAs. An 'error' event is emitted if verification fails. Verification happens at the connection level, before the HTTP request is sent. Can be used in Node.js client environment to manually specify certificate information.
-
-- `perMessageDeflate` (`Object|Boolean`): parameters of the WebSocket permessage-deflate extension
-           (see [ws module](https://github.com/einaros/ws) api docs). Set to `false` to disable. (`true`)
-
-- `threshold` (`Number`): data is compressed only if the byte size is above this value. This option is ignored on the browser. (`1024`)
-
-- `extraHeaders` (`Object`): Headers that will be passed for each request to the server (via xhr-polling and via websockets). These values then can be used during handshake or 
 
 ## Event Component Props
 

@@ -1,5 +1,7 @@
 # react-socket-io
 
+[![Build Status](https://travis-ci.org/charleslxh/react-socket-io.svg?branch=master)](https://travis-ci.org/charleslxh/react-socket-io)
+
 A react provider for socket.io, http://socket.io/
 
 react-socket-io is compatible with [browserify](http://browserify.org/).

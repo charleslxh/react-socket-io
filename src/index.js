@@ -3,4 +3,4 @@ import Event from './Event';
 
 if (window) window.ReactSocketIO = { Socket, Event };
 
-export default { Socket, Event };
+export { Socket, Event };

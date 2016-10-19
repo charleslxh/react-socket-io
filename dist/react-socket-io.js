@@ -284,6 +284,7 @@ var debug = exports.debug = function debug() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Event = exports.Socket = undefined;
 
 var _Socket = require('./Socket');
 
@@ -297,7 +298,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 if (window) window.ReactSocketIO = { Socket: _Socket2.default, Event: _Event2.default };
 
-exports.default = { Socket: _Socket2.default, Event: _Event2.default };
+exports.Socket = _Socket2.default;
+exports.Event = _Event2.default;
 },{"./Event":1,"./Socket":2}],5:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/object/assign"), __esModule: true };
 },{"core-js/library/fn/object/assign":18}],6:[function(require,module,exports){

@@ -1,48 +1,48 @@
-import React from 'react'
+import React from 'react';
 
-import { warning } from './utils'
+import { warning } from './utils';
 
 class Event extends React.Component {
   constructor(props, context) {
-    super(props, context)
-  }
-
-  static contextTypes = {
-    socket: React.PropTypes.object.isRequired
+    super(props, context);
   }
 
   componentDidMount() {
-    const { event, handler } = this.props
-    const { socket } = this.context
+    const { event, handler } = this.props;
+    const { socket } = this.context;
 
     if (!socket) {
-      warning('Socket IO connection has not been established.')
-      return
+      warning('Socket IO connection has not been established.');
+      return;
     }
 
-    socket.on(event, handler)
+    socket.on(event, handler);
   }
 
   conponentWillUnmount() {
-    const { event, handler } = this.props
-    const { socket } = this.context
+    const { event, handler } = this.props;
+    const { socket } = this.context;
 
     if (!socket) {
-      warning('Socket IO connection has not been established.')
-      return
+      warning('Socket IO connection has not been established.');
+      return;
     }
 
-    socket.off(event, handler)
+    socket.off(event, handler);
   }
 
   render() {
-    return false
+    return false;
   }
 }
+
+Event.contextTypes = {
+  socket: React.PropTypes.object.isRequired
+};
 
 Event.propTypes = {
   event: React.PropTypes.string.isRequired,
   handler: React.PropTypes.func.isRequired
-}
+};
 
-export default Event
+export default Event;

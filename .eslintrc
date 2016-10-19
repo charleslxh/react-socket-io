@@ -1,0 +1,27 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "impliedStrict": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "rules": {
+        "semi": ["error", "always"],
+        "eqeqeq": ["error", "always"],
+        "curly": "off",
+        "quotes": ["error", "single"],
+        "jsx-quotes": ["error", "prefer-double"],
+        "indent": ["error", 2],
+        "arrow-body-style": ["error", "as-needed"],
+        "arrow-parens": ["error", "always"],
+        "arrow-spacing": ["error", { "before": true, "after": true }],
+        no-var: "error"
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}

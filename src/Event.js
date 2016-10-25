@@ -19,7 +19,7 @@ class Event extends React.Component {
     socket.on(event, handler);
   }
 
-  conponentWillUnmount() {
+  componentWillUnmount() {
     const { event, handler } = this.props;
     const { socket } = this.context;
 
@@ -34,7 +34,7 @@ class Event extends React.Component {
   render() {
     return false;
   }
-}
+};
 
 Event.contextTypes = {
   socket: React.PropTypes.object.isRequired

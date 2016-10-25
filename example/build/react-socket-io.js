@@ -58,8 +58,8 @@ var Event = function (_React$Component) {
       socket.on(event, handler);
     }
   }, {
-    key: 'conponentWillUnmount',
-    value: function conponentWillUnmount() {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
       var _props2 = this.props;
       var event = _props2.event;
       var handler = _props2.handler;
@@ -81,6 +81,8 @@ var Event = function (_React$Component) {
   }]);
   return Event;
 }(_react2.default.Component);
+
+;
 
 Event.contextTypes = {
   socket: _react2.default.PropTypes.object.isRequired

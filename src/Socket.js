@@ -70,7 +70,7 @@ class Socket extends React.Component {
 
 Socket.propTypes = {
   options: React.PropTypes.object,
-  uri: React.PropTypes.string.isRequired,
+  uri: React.PropTypes.string,
   children: React.PropTypes.element.isRequired
 };
 

@@ -218,7 +218,7 @@ var Socket = function (_React$Component) {
 
 Socket.propTypes = {
   options: _react2.default.PropTypes.object,
-  uri: _react2.default.PropTypes.string.isRequired,
+  uri: _react2.default.PropTypes.string,
   children: _react2.default.PropTypes.element.isRequired
 };
 

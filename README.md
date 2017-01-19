@@ -121,7 +121,7 @@ A event handler for that event.
 
 # Run Example
 
-The `example` folder contain a basic **socket.io server**, run `node server.js` to start server, and then visit `localhost:8090`.
+The `example` folder contain a basic **socket.io server**, run `npm run-script example` to start server, and then visit `localhost:8090`.
 
 # As a contributer.
 

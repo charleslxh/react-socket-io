@@ -4,7 +4,8 @@
   "description": "A react provider for socket.io, http://socket.io/",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node ./example/server.js"
+    "example": "node ./example/server.js",
+    "start": "gulp"
   },
   "dependencies": {
     "socket.io-client": "^1.5.0"

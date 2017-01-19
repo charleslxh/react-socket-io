@@ -21,11 +21,18 @@ function handler (req, res) {
 }
 
 io.on('connection', function (socket) {
-  setInterval(function(){
-    socket.emit('news', 'Hello React Socket IO.');
-  }, 2000);
-  socket.on('my other event', function (data) {
-    console.log(data);
+  socket.on('message_send', function (message) {
+    console.log('message_send: ', message);
+
+    setTimeout(function() {
+      var newMessage = {
+        from: 'Server',
+        time: new Date().getTime(),
+        content: 'I got you message, you said: ' + message.content
+      };
+
+      socket.emit('message_new', newMessage);
+    }, 1000);
   });
 });
 

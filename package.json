@@ -4,7 +4,7 @@
   "description": "A react provider for socket.io, http://socket.io/",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./example/server.js"
   },
   "dependencies": {
     "socket.io-client": "^1.5.0"

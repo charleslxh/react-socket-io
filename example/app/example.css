@@ -9,10 +9,35 @@ h1 { text-align: center; }
 
 .container { padding: 10px 20px; }
 
-.tip {
+.chat-section {
+  border: 1px solid #aaaaaa;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+  transition: all 0.5s ease-in;
+  margin: 0 auto;
+}
+
+.chat-section .chat-users-section {
+  height: 100%;
+  float: left;
+  width: 30%;
+  border-right: 1px solid #aaaaaa;
+}
+
+.chat-section .chat-body-section {
+  position: relative;
+  height: 100%;
+  display: inline-block;
+  width: -webkit-calc(100% - 30% - 1px);
+  width: -moz-calc(100% - 30% - 1px);
+}
+
+.chat-section .chat-users-section .title,
+.chat-section .chat-body-section .title {
   font-style: italic;
   width: 100%;
-  border-bottom: 1px dashed #aaaaaa;
+  border-bottom: 1px solid #aaaaaa;
   text-align: center;
   padding: 5px;
   height: 20px;
@@ -20,42 +45,90 @@ h1 { text-align: center; }
   font-weight: bolder;
 }
 
-.chat {
-  border: 1px solid #aaaaaa;
-  width: 100%;
-  height: 700px;
-  overflow: hidden;
-  position: relative;
+.chat-section .chat-users-section .users {
+  height: -webkit-calc(100% - 31px);
+  height: -moz-calc(100% - 31px);
 }
 
-.chat .messages {
+.chat-section .chat-users-section .users .user {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  overflow-y: scroll;
+  position: relative;
+  cursor: pointer;
+}
+
+.chat-section .chat-users-section .users .user:hover,
+.chat-section .chat-users-section .users .user.active {
+  background-color: #efefef;
+}
+
+.chat-section .chat-users-section .users .user .avatar {
+  flex: 0 1 auto;
+  width: 48px;
+  height: 48px;
+  padding-left: 5px;
+}
+
+.chat-section .chat-users-section .users .user .others {
+  flex: 1 1 auto;
+  height: 48px;
+  padding-left: 20px;
+  padding-right: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow:hidden;
+}
+
+.chat-section .chat-users-section .users .user .others .username {
+}
+
+.chat-section .chat-users-section .users .user .unreadMessageCount {
+  position: absolute;
+  left: 45px;
+  top: 6px;
+  background-color: red;
+  padding: 1px 4px;
+  color: #ffffff;
+  font-size: 14px;
+  border-radius: 50%;
+  transition: all 0.5s ease-in;
+}
+
+.chat-section .chat-users-section .users .user .unreadMessageCount.hidden {
+  opacity: 0;
+}
+
+.chat-section .chat-body-section .messages {
   height: calc(100% - 94px);
   height: -webkit-calc(100% - 94px);
-  height: -moz-calc(100% - 40px - 108px);
+  height: -moz-calc(100% - 94px);
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
-.chat .messages .message {
+.chat-section .chat-body-section .messages .message {
   margin: 2px 5px;
 }
 
-.chat .messages .message.isMine {
+.chat-section .chat-body-section .messages .message.isMine {
   text-align: right;
 }
 
-.chat .messages .message .title {
+.chat-section .chat-body-section .messages .message .info {
   font-size: 12px;
   color: #9f9f9f;
   font-style: italic;
 }
 
-.chat .messages .message .content {
+.chat-section .chat-body-section .messages .message .content {
   word-break: break-word;
   white-space: pre-wrap;
 }
 
-.chat .footer {
+.chat-section .chat-body-section .footer {
   position: absolute;
   right: 0;
   left: 0;
@@ -64,7 +137,7 @@ h1 { text-align: center; }
   padding: 8px 10px 0 10px;
 }
 
-.chat .footer textarea {
+.chat-section .chat-body-section .footer textarea {
   width: 100%;
   outline: none;
   border: none;
@@ -79,4 +152,22 @@ h1 { text-align: center; }
   border-radius: 0;
   clear: both;
   font-style: italic;
+}
+
+@media screen and (max-width: 768px) {
+  .chat-section {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1300px) {
+  .chat-section {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .chat-section {
+    width: 60%;
+  }
 }

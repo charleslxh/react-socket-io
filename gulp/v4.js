@@ -9,7 +9,9 @@ var eslint = require('gulp-eslint');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
 
-module.exports = function(gulp) {
+module.exports = function (gulp) {
+  gutil.log(gutil.colors.green('use v4 configuration.'));
+
   var paths = {
     scripts: {
       _clean: {
@@ -61,13 +63,13 @@ module.exports = function(gulp) {
       .pipe(gulp.dest(paths.scripts._browserify.dest));
   }
 
-  function _uglify(cb) {
-    return pump([
+  function _uglify(callback) {
+    pump([
       gulp.src(paths.scripts._babel.src),
       uglify(),
       gulp.dest(paths.scripts._babel.dest)
     ],
-    cb);
+    callback);
   }
 
   function _copy() {

@@ -20,7 +20,7 @@
     "browser-sync": "^2.17.2",
     "browserify": "^13.1.0",
     "del": "^2.2.2",
-    "gulp": "gulpjs/gulp#4.0",
+    "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^3.0.1",
     "gulp-mocha": "^3.0.1",

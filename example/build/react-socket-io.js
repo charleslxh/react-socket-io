@@ -94,7 +94,7 @@ Event.propTypes = {
 };
 
 exports.default = Event;
-},{"./utils":4,"babel-runtime/core-js/object/get-prototype-of":8,"babel-runtime/helpers/classCallCheck":12,"babel-runtime/helpers/createClass":13,"babel-runtime/helpers/inherits":15,"babel-runtime/helpers/possibleConstructorReturn":16,"react":129}],2:[function(require,module,exports){
+},{"./utils":3,"babel-runtime/core-js/object/get-prototype-of":8,"babel-runtime/helpers/classCallCheck":12,"babel-runtime/helpers/createClass":13,"babel-runtime/helpers/inherits":15,"babel-runtime/helpers/possibleConstructorReturn":16,"react":129}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -227,29 +227,7 @@ Socket.childContextTypes = {
 };
 
 exports.default = Socket;
-},{"./utils":4,"babel-runtime/core-js/object/get-prototype-of":8,"babel-runtime/helpers/classCallCheck":12,"babel-runtime/helpers/createClass":13,"babel-runtime/helpers/extends":14,"babel-runtime/helpers/inherits":15,"babel-runtime/helpers/possibleConstructorReturn":16,"react":129,"socket.io-client":130}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Event = exports.Socket = undefined;
-
-var _Socket = require('./Socket');
-
-var _Socket2 = _interopRequireDefault(_Socket);
-
-var _Event = require('./Event');
-
-var _Event2 = _interopRequireDefault(_Event);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-if (window) window.ReactSocketIO = { Socket: _Socket2.default, Event: _Event2.default };
-
-exports.Socket = _Socket2.default;
-exports.Event = _Event2.default;
-},{"./Event":1,"./Socket":2}],4:[function(require,module,exports){
+},{"./utils":3,"babel-runtime/core-js/object/get-prototype-of":8,"babel-runtime/helpers/classCallCheck":12,"babel-runtime/helpers/createClass":13,"babel-runtime/helpers/extends":14,"babel-runtime/helpers/inherits":15,"babel-runtime/helpers/possibleConstructorReturn":16,"react":129,"socket.io-client":130}],3:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -302,7 +280,29 @@ var debug = exports.debug = function debug() {
 };
 }).call(this,require('_process'))
 
-},{"_process":97}],5:[function(require,module,exports){
+},{"_process":97}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Event = exports.Socket = undefined;
+
+var _Socket = require('./Socket');
+
+var _Socket2 = _interopRequireDefault(_Socket);
+
+var _Event = require('./Event');
+
+var _Event2 = _interopRequireDefault(_Event);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+if (window) window.ReactSocketIO = { Socket: _Socket2.default, Event: _Event2.default };
+
+exports.Socket = _Socket2.default;
+exports.Event = _Event2.default;
+},{"./Event":1,"./Socket":2}],5:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/object/assign"), __esModule: true };
 },{"core-js/library/fn/object/assign":18}],6:[function(require,module,exports){
 module.exports = { "default": require("core-js/library/fn/object/create"), __esModule: true };
@@ -443,14 +443,14 @@ var _symbol = require("../core-js/symbol");
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
-var _typeof = typeof _symbol2.default === "function" && typeof _iterator2.default === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj; };
+var _typeof = typeof _symbol2.default === "function" && typeof _iterator2.default === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default ? "symbol" : typeof obj; };
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.default) === "symbol" ? function (obj) {
   return typeof obj === "undefined" ? "undefined" : _typeof(obj);
 } : function (obj) {
-  return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
+  return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
 };
 },{"../core-js/symbol":10,"../core-js/symbol/iterator":11}],18:[function(require,module,exports){
 require('../../modules/es6.object.assign');
@@ -12922,7 +12922,7 @@ function toArray(list, index) {
     return array
 }
 
-},{}]},{},[3])
+},{}]},{},[4])
 
 
 //# sourceMappingURL=react-socket-io.js.map

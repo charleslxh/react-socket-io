@@ -2,6 +2,7 @@ var del = require('del');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+var rename = require('gulp-rename')
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var babel = require('gulp-babel');
@@ -11,9 +12,10 @@ var pump = require('pump');
 var runSequence = require('run-sequence');
 
 module.exports = function (gulp) {
+  gutil.log(gutil.colors.green('use v3 configuration.'));
 
   gulp.task('lint', function() {
-    gulp.src([
+    return gulp.src([
       'src/**/*.js',
       '!node_modules/**',
       '!dist/**',
@@ -30,7 +32,7 @@ module.exports = function (gulp) {
   });
 
   gulp.task('babel', function() {
-    gulp.src('src/**/*.js')
+    return gulp.src('src/**/*.js')
       .pipe(babel({
         presets: ['es2015', 'react', 'stage-0'],
         plugins: ['transform-runtime']
@@ -56,12 +58,17 @@ module.exports = function (gulp) {
       .pipe(gulp.dest(EXAMPLE_PATH));
   })
 
-  gulp.task('uglify', function(cb) {
-    return pump([ gulp.src('dist/react-socket-io.js'), uglify(), gulp.dest('dist')], cb);
+  gulp.task('uglify', function(callback) {
+    // pump([gulp.src('dist/react-socket-io.js'), uglify(), gulp.dest('dist')], callback);
+    return gulp.src('dist/react-socket-io.js')
+      .pipe(uglify())
+      .on('error', gutil.log)
+      .pipe(rename({ extname: '.min.js' }))
+      .pipe(gulp.dest('dist'));
   });
 
-  gulp.task('build', function() {
-    runSequence('clean', 'babel', 'browserify', 'uglify');
+  gulp.task('build', function(callback) {
+    runSequence('clean', 'babel', 'browserify', 'uglify', callback);
   });
 
   gulp.task('default', ['build'], function() {

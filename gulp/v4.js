@@ -79,7 +79,7 @@ module.exports = function (gulp) {
 
   function _watch() {
     gulp.watch('src/**/*.js', ['build']).on('change', function(event) {
-      console.log('File ' + event.path + ' was ' + event.type + ', rebuilding... ...');
+      gutil.log(gutil.colors.magenta('File ' + event.path + ' was ' + event.type + ', try rebuild'));
     });
   }
 

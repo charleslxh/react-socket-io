@@ -159,6 +159,7 @@ var Chat = React.createClass({
         <ReactSocketIO.Event event="response" handler={self.handleEventResponse} />
         <ReactSocketIO.Event event="user:added" handler={self.handleUserAdded} />
         <ReactSocketIO.Event event="user:removed" handler={self.handleUserRemoved} />
+
         <div className="chat-section" ref="chat">
           <div className="chat-users-section">
             <div className="title">Online Users</div>
@@ -199,7 +200,7 @@ var Chat = React.createClass({
                     <div className={classes} key={index}>
                       <div className="info">
                         <span className="name"></span>
-                        <span className="time">{time.toLocaleTimeString()}</span>
+                        <span className="time">{time.toLocaleString()}</span>
                       </div>
                       <pre className="content">
                         {message.content}

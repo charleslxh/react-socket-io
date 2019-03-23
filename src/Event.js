@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { warning } from './utils';
+import {SocketContext} from './SocketContext';
+import {warning} from './utils';
 
 class Event extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
   }
 
   componentDidMount() {
-    const { event, handler } = this.props;
-    const { socket } = this.context;
+    const {event, handler} = this.props;
+    const socket = this.context;
 
     if (!socket) {
       warning('Socket IO connection has not been established.');
@@ -21,8 +21,8 @@ class Event extends React.Component {
   }
 
   componentWillUnmount() {
-    const { event, handler } = this.props;
-    const { socket } = this.context;
+    const {event, handler} = this.props;
+    const socket = this.context;
 
     if (!socket) {
       warning('Socket IO connection has not been established.');
@@ -35,11 +35,9 @@ class Event extends React.Component {
   render() {
     return false;
   }
-};
+}
 
-Event.contextTypes = {
-  socket: PropTypes.object.isRequired
-};
+Event.contextType = SocketContext;
 
 Event.propTypes = {
   event: PropTypes.string.isRequired,

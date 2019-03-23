@@ -1,27 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SocketIO from 'socket.io-client';
-
-import { warning, debug } from './utils';
+import {SocketContext} from './SocketContext';
+import {warning, debug} from './utils';
 
 class Socket extends React.Component {
-  getChildContext() {
-    return { socket: this.socket };
-  }
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     this.socket = SocketIO(props.uri, this.mergeOptions(props.options));
 
     this.socket.status = 'initialized';
 
-    this.socket.on('connect', (data) => {
+    this.socket.on('connect', () => {
       this.socket.status = 'connected';
       debug('connected');
     });
 
-    this.socket.on('disconnect', (data) => {
+    this.socket.on('disconnect', () => {
       this.socket.status = 'disconnected';
       debug('disconnect');
     });
@@ -36,11 +33,11 @@ class Socket extends React.Component {
       debug('reconnect', data);
     });
 
-    this.socket.on('reconnect_attempt', (data) => {
+    this.socket.on('reconnect_attempt', () => {
       debug('reconnect_attempt');
     });
 
-    this.socket.on('reconnecting', (data) => {
+    this.socket.on('reconnecting', () => {
       this.socket.status = 'reconnecting';
       debug('reconnecting');
     });
@@ -61,11 +58,13 @@ class Socket extends React.Component {
       transports: ['polling'],
       rejectUnauthorized: true
     };
-    return { ...defaultOptions, ...options };
+    return {...defaultOptions, ...options};
   }
 
   render() {
-    return React.Children.only(this.props.children);
+    return <SocketContext.Provider value={this.socket}>
+      {React.Children.only(this.props.children)}
+  </SocketContext.Provider>;
   }
 }
 
@@ -73,10 +72,6 @@ Socket.propTypes = {
   options: PropTypes.object,
   uri: PropTypes.string,
   children: PropTypes.element.isRequired
-};
-
-Socket.childContextTypes = {
-  socket: PropTypes.object
 };
 
 export default Socket;

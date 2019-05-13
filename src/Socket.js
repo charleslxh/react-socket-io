@@ -5,7 +5,6 @@ import {SocketContext} from './SocketContext';
 import {warning, debug} from './utils';
 
 class Socket extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -62,9 +61,11 @@ class Socket extends React.Component {
   }
 
   render() {
-    return <SocketContext.Provider value={this.socket}>
-      {React.Children.only(this.props.children)}
-  </SocketContext.Provider>;
+    return (
+      <SocketContext.Provider value={this.socket}>
+        {React.Children.only(this.props.children)}
+      </SocketContext.Provider>
+    );
   }
 }
 

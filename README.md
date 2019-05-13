@@ -24,8 +24,8 @@ const uri = 'http://localhost/test';
 const options = { transports: ['websocket'] };
 
 export default class AppContainer extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
     }
 
     render() {
@@ -45,8 +45,8 @@ import React from 'react';
 import { Event } from 'react-socket-io';
 
 export default class MyComponent extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.onMessage = this.onMessage.bind(this);
     }
 

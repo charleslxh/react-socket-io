@@ -43,7 +43,7 @@ module.exports = function (gulp) {
   function _babel() {
     return gulp.src(paths.scripts._babel.src)
       .pipe(babel({
-        presets: ['es2015', 'react', 'stage-0'],
+        presets: ['es2015', '@babel/preset-react', 'stage-0'],
         plugins: ['transform-runtime']
       }))
       .pipe(gulp.dest(paths.scripts._babel.dest))

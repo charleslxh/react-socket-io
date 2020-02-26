@@ -66,6 +66,30 @@ export default class MyComponent extends React.Component {
 
 ```
 
+# How to set transport and hostname to current transport and hostname
+please remove the url and options in the props of Socket tag
+if your site's baseurl is http://localhost:3000, socketio's baseurl is http://localhost:3000 too.
+
+```js
+import React from 'react';
+import { Socket } from 'react-socket-io';
+
+export default class AppContainer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <Socket> 
+                { this.props.children }
+            </Socket>
+        );
+    }
+}
+```
+
+
 # Related Props
 
 ## Socket Component Props
